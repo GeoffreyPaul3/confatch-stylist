@@ -19,10 +19,10 @@ export default function Consultation() {
   const formatDate = (date: Date | DateRange | undefined) => {
     if (!date) return "Pick a date";
     if (Array.isArray(date)) {
-      // Handle DateRange (start and end date)
+      
       return `${format(date[0], "PPP")} - ${format(date[1], "PPP")}`;
     }
-    return format(date, "PPP"); // Single date
+    return format(date, "PPP"); 
   };
 
   
