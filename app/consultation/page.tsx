@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
@@ -14,10 +12,10 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { format } from 'date-fns';
+import { DateRange } from 'react-day-picker';
 
 export default function Consultation() {
-  const [date, setDate] = useState<Date>();
-
+  const [date, setDate] = useState<Date | DateRange>();  
   return (
     <main className="pt-24">
       <section className="py-16 px-4">
@@ -79,7 +77,7 @@ export default function Consultation() {
                       <Calendar
                         mode="single"
                         selected={date}
-                        onSelect={setDate}
+                        onSelect={setDate} 
                         initialFocus
                       />
                     </PopoverContent>
