@@ -1,13 +1,13 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { DayPicker, DayPickerProps } from "react-day-picker";
+import { DayPicker, DayPickerProps, DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
 export type CalendarProps = DayPickerProps & {
-  selected: Date | undefined;
-  onSelect: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  selected: Date | DateRange | undefined;
+  onSelect: React.Dispatch<React.SetStateAction<Date | DateRange | undefined>>;
 };
 
 function Calendar({
@@ -18,10 +18,17 @@ function Calendar({
   onSelect,
   ...props
 }: CalendarProps) {
+  // Adjust the selected prop based on the mode or keep it as is
+  const selectedRange: DateRange | undefined = Array.isArray(selected)
+    ? { from: selected[0], to: selected[1] }
+    : selected instanceof Date
+    ? { from: selected, to: selected }
+    : undefined;
+
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
-      selected={selected}
+      selected={selectedRange}
       onSelect={onSelect}
       className={cn("p-3", className)}
       classNames={{
