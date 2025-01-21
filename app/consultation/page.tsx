@@ -8,10 +8,10 @@ import { CalendarIcon } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { format } from "date-fns";
 import { DateRange } from "react-day-picker";
-import { Input } from "@/components/ui/input"; // Add this import
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"; // Add these imports
-import { Textarea } from "@/components/ui/textarea"; // Add this import
-import { ArrowRight } from "lucide-react"; // Add this import
+import { Input } from "@/components/ui/input"; 
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"; 
+import { Textarea } from "@/components/ui/textarea"; 
+import { ArrowRight } from "lucide-react"; 
 
 export default function Consultation() {
   const [date, setDate] = useState<Date | DateRange | undefined>();
@@ -19,13 +19,12 @@ export default function Consultation() {
   const formatDate = (date: Date | DateRange | undefined) => {
     if (!date) return "Pick a date";
     if (Array.isArray(date)) {
-      
+      // When it's a range, format both start and end dates
       return `${format(date[0], "PPP")} - ${format(date[1], "PPP")}`;
     }
+    // When it's a single date, format it directly
     return format(date, "PPP"); 
   };
-
-  
 
   return (
     <main className="pt-24">
