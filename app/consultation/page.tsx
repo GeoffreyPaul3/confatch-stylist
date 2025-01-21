@@ -1,140 +1,74 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { Calendar } from "@/components/ui/calendar";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { CalendarIcon } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { format } from "date-fns";
-import { DateRange } from "react-day-picker";
-import { Input } from "@/components/ui/input"; 
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"; 
-import { Textarea } from "@/components/ui/textarea"; 
-import { ArrowRight } from "lucide-react"; 
+import { useState } from 'react'
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
-export default function Consultation() {
-  const [date, setDate] = useState<Date | DateRange | undefined>();
+export default function ConsultationForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    eventType: '',
+    message: ''
+  })
 
-  const formatDate = (date: Date | DateRange | undefined) => {
-    if (!date) return "Pick a date";
-    if (Array.isArray(date)) {
-      // When it's a range, format both start and end dates
-      if (date[0] && date[1]) {
-        return `${format(date[0], "PPP")} - ${format(date[1], "PPP")}`;
-      }
-      return "Invalid date range"; // Add a fallback in case the range is incomplete
-    }
-    // When it's a single date, format it directly
-    return format(date, "PPP");
-  };
-  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prevState => ({ ...prevState, [name]: value }))
+  }
+
+  const handleSelectChange = (value: string) => {
+    setFormData(prevState => ({ ...prevState, eventType: value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    // Here you would typically send the form data to your server
+    console.log('Form submitted:', formData)
+    // Reset form after submission
+    setFormData({ name: '', email: '', eventType: '', message: '' })
+  }
 
   return (
-    <main className="pt-24">
-      <section className="py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Personal Styling Consultation</h1>
-            <p className="text-lg text-gray-600">
-              Let our expert stylists help you create a wardrobe that tells your unique story
-            </p>
-          </div>
-
-          <form className="space-y-8 bg-white p-8 rounded-lg shadow-lg">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" placeholder="Enter your full name" />
-                </div>
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="Enter your email" />
-                </div>
-                <div>
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" placeholder="Enter your phone number" />
-                </div>
-                <div>
-                  <Label>Preferred Consultation Type</Label>
-                  <RadioGroup defaultValue="in-person">
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="in-person" id="in-person" />
-                      <Label htmlFor="in-person">In-Person</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="virtual" id="virtual" />
-                      <Label htmlFor="virtual">Virtual</Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <Label>Preferred Date</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className="w-full justify-start text-left font-normal"
-                      >
-                        <CalendarIcon className="mr-2 h-4 w-4" />
-                        {formatDate(date)}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0">
-                      <Calendar
-                        mode="single"
-                        selected={date}
-                        onSelect={setDate}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-
-                <div>
-                  <Label htmlFor="event">Event Type (if any)</Label>
-                  <Input id="event" placeholder="e.g., Wedding, Corporate Event, etc." />
-                </div>
-
-                <div>
-                  <Label htmlFor="message">Additional Information</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us about your style preferences, any specific requirements, or questions you have"
-                    className="h-32"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <Button className="px-8" size="lg">
-                Book Consultation
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </div>
-          </form>
-
-          <div className="mt-16 grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <h3 className="font-semibold mb-2">Personal Attention</h3>
-              <p className="text-gray-600">One-on-one sessions with our expert stylists</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">Style Analysis</h3>
-              <p className="text-gray-600">Comprehensive assessment of your style preferences</p>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-2">Custom Solutions</h3>
-              <p className="text-gray-600">Tailored recommendations for your lifestyle</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  );
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <Input
+        type="text"
+        name="name"
+        placeholder="Your Name"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        type="email"
+        name="email"
+        placeholder="Your Email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+      <Select onValueChange={handleSelectChange} value={formData.eventType}>
+        <SelectTrigger>
+          <SelectValue placeholder="Select Event Type" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="fashion-week">Fashion Week</SelectItem>
+          <SelectItem value="corporate-event">Corporate Event</SelectItem>
+          <SelectItem value="special-celebration">Special Celebration</SelectItem>
+          <SelectItem value="other">Other</SelectItem>
+        </SelectContent>
+      </Select>
+      <Textarea
+        name="message"
+        placeholder="Tell us about your style preferences and event details"
+        value={formData.message}
+        onChange={handleChange}
+        required
+      />
+      <Button type="submit">Request Consultation</Button>
+    </form>
+  )
 }
+
