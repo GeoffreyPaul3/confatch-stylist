@@ -4,16 +4,18 @@ import Link from 'next/link'
 export default function WomensCollection() {
   // This would typically come from your CMS or API
   const products = [
-    { id: 1, name: 'African Print Dress', image: '/product1.jpg' },
-    { id: 2, name: 'Fusion Blazer', image: '/product2.jpg' },
-    // Add more products...
+    { id: 1, name: 'African Print Dress', image: '/confatch/img-4.jpg' },
+    { id: 2, name: 'Fusion Blazer', image: '/confatch/img-5.jpg' },
+    { id: 3, name: 'African Print Dress', image: '/confatch/img-11.jpg' },
+    { id: 4, name: 'Fusion Blazer', image: '/confatch/img-18.jpg' },
+    
   ]
 
   return (
     <div className="container mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold text-center mb-8">Women's Collection</h1>
+      <h1 className="text-4xl font-bold text-center mb-8">Women&apos;s Collection</h1>
       <p className="text-xl text-center text-gray-700 mb-12">
-        Ennoble Your Style with our Exquisite Women's Collection
+        Ennoble Your Style with our Exquisite Women&apos;s Collection
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {products.map((product) => (
