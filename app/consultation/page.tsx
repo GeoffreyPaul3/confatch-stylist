@@ -3,21 +3,24 @@
 import { useState } from 'react';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { ArrowRight, CalendarIcon } from 'lucide-react';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import { CalendarIcon } from 'lucide-react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { format } from 'date-fns';
 import { DateRange } from 'react-day-picker';
 
 export default function Consultation() {
-  const [date, setDate] = useState<Date | DateRange>();  
+  const [date, setDate] = useState<Date | DateRange | undefined>();
+
+  const formatDate = (date: Date | DateRange | undefined) => {
+    if (!date) return 'Pick a date';
+    if (Array.isArray(date)) {
+      // Handle DateRange (start and end date)
+      return `${format(date[0], 'PPP')} - ${format(date[1], 'PPP')}`;
+    }
+    return format(date, 'PPP'); // Single date
+  };
+
   return (
     <main className="pt-24">
       <section className="py-16 px-4">
@@ -36,17 +39,14 @@ export default function Consultation() {
                   <Label htmlFor="name">Full Name</Label>
                   <Input id="name" placeholder="Enter your full name" />
                 </div>
-                
                 <div>
                   <Label htmlFor="email">Email</Label>
                   <Input id="email" type="email" placeholder="Enter your email" />
                 </div>
-
                 <div>
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input id="phone" placeholder="Enter your phone number" />
                 </div>
-
                 <div>
                   <Label>Preferred Consultation Type</Label>
                   <RadioGroup defaultValue="in-person">
@@ -72,14 +72,14 @@ export default function Consultation() {
                         className="w-full justify-start text-left font-normal"
                       >
                         <CalendarIcon className="mr-2 h-4 w-4" />
-                        {date ? format(date, 'PPP') : <span>Pick a date</span>}
+                        {formatDate(date)}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0">
                       <Calendar
                         mode="single"
                         selected={date}
-                        onSelect={setDate} 
+                        onSelect={setDate}
                         initialFocus
                       />
                     </PopoverContent>
