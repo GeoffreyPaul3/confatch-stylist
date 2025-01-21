@@ -20,11 +20,15 @@ export default function Consultation() {
     if (!date) return "Pick a date";
     if (Array.isArray(date)) {
       // When it's a range, format both start and end dates
-      return `${format(date[0], "PPP")} - ${format(date[1], "PPP")}`;
+      if (date[0] && date[1]) {
+        return `${format(date[0], "PPP")} - ${format(date[1], "PPP")}`;
+      }
+      return "Invalid date range"; // Add a fallback in case the range is incomplete
     }
     // When it's a single date, format it directly
-    return format(date, "PPP"); 
+    return format(date, "PPP");
   };
+  
 
   return (
     <main className="pt-24">
