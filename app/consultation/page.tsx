@@ -25,6 +25,8 @@ export default function Consultation() {
     return format(date, "PPP"); // Single date
   };
 
+  
+
   return (
     <main className="pt-24">
       <section className="py-16 px-4">
