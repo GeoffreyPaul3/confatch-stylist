@@ -25,7 +25,7 @@ const AboutUs = () => {
                     <CardTitle className="text-3xl font-bold mb-4 font-playfair">A Fusion of Cultures</CardTitle>
                   </CardHeader>
                   <p className="text-gray-700 mb-6 font-montserrat">
-                    Confatch is a luxurious fashion brand born in Malawi, highlighting the fusion of African and Western culture through textiles, accessories, and colors. We believe that fashion is more than just clothing—it's a canvas for expressing who we are, telling our stories, and connecting with the world.
+                    Confatch is a luxurious fashion brand born in Malawi, highlighting the fusion of African and Western culture through textiles, accessories, and colors. We believe that fashion is more than just clothing it&apos;s a canvas for expressing who we are, telling our stories, and connecting with the world.
                   </p>
                   <p className="text-gray-700 mb-6">
                     Our designs are crafted with precision and passion, using the finest materials and skilled artisans. Each collection is a masterpiece that embodies the creative fusion of tradition and modernity, bringing together the elegance of Africa and the sophistication of the West.
