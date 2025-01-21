@@ -1,24 +1,28 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
-import { Calendar } from '@/components/ui/calendar';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { CalendarIcon } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { format } from 'date-fns';
-import { DateRange } from 'react-day-picker';
+import { useState } from "react";
+import { Calendar } from "@/components/ui/calendar";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { CalendarIcon } from "lucide-react";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { format } from "date-fns";
+import { DateRange } from "react-day-picker";
+import { Input } from "@/components/ui/input"; // Add this import
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"; // Add these imports
+import { Textarea } from "@/components/ui/textarea"; // Add this import
+import { ArrowRight } from "lucide-react"; // Add this import
 
 export default function Consultation() {
   const [date, setDate] = useState<Date | DateRange | undefined>();
 
   const formatDate = (date: Date | DateRange | undefined) => {
-    if (!date) return 'Pick a date';
+    if (!date) return "Pick a date";
     if (Array.isArray(date)) {
       // Handle DateRange (start and end date)
-      return `${format(date[0], 'PPP')} - ${format(date[1], 'PPP')}`;
+      return `${format(date[0], "PPP")} - ${format(date[1], "PPP")}`;
     }
-    return format(date, 'PPP'); // Single date
+    return format(date, "PPP"); // Single date
   };
 
   return (
