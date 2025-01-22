@@ -6,13 +6,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { CalendarIcon } from "lucide-react"; // Removed ArrowRight since it was not being used
+import { CalendarIcon } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
 import { DayPicker } from "react-day-picker";
 
 export default function Consultation() {
-  const [date, setDate] = useState<Date | undefined>(undefined); // Change to undefined to avoid `null` assignment issue
+  const [date, setDate] = useState<Date | undefined>(undefined);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -47,11 +47,10 @@ export default function Consultation() {
           title: "Consultation Booked",
           description: "You'll receive a confirmation email shortly.",
         });
-        // Reset form
         setName("");
         setEmail("");
         setPhone("");
-        setDate(undefined); // Reset to undefined instead of null
+        setDate(undefined);
         setConsultationType("in-person");
         setEvent("");
         setMessage("");
@@ -69,103 +68,130 @@ export default function Consultation() {
   };
 
   return (
-    <main className="pt-24">
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold mb-4">Personal Styling Consultation</h1>
-            <p className="text-lg text-gray-600">
+    <main className="pt-16 sm:pt-24">
+      <section className="py-12 sm:py-16 px-4 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-8 sm:mb-12">
+            <h1 className="text-3xl sm:text-4xl font-bold mb-2 sm:mb-4">
+              Personal Styling Consultation
+            </h1>
+            <p className="text-md sm:text-lg text-muted-foreground">
               Let our expert stylists help you create a wardrobe that tells your unique story.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
             {/* Name Field */}
             <div>
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name" className="block text-sm font-medium leading-6">
+                Name
+              </Label>
               <Input
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                className="mt-2"
               />
             </div>
 
             {/* Email Field */}
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className="block text-sm font-medium leading-6">
+                Email
+              </Label>
               <Input
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 required
+                className="mt-2"
               />
             </div>
 
             {/* Phone Field */}
             <div>
-              <Label htmlFor="phone">Phone Number</Label>
+              <Label htmlFor="phone" className="block text-sm font-medium leading-6">
+                Phone Number
+              </Label>
               <Input
                 id="phone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 required
+                className="mt-2"
               />
             </div>
 
             {/* Consultation Type Radio Group */}
             <div>
-              <Label>Consultation Type</Label>
-              <RadioGroup value={consultationType} onValueChange={setConsultationType}>
-                <RadioGroupItem value="in-person">
-                  <Label>In-Person</Label>
-                </RadioGroupItem>
-                <RadioGroupItem value="virtual">
-                  <Label>Virtual</Label>
-                </RadioGroupItem>
+              <Label className="block text-sm font-medium leading-6">Consultation Type</Label>
+              <RadioGroup
+                value={consultationType}
+                onValueChange={setConsultationType}
+                className="mt-2 space-y-2"
+              >
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="in-person" id="in-person" />
+                  <Label htmlFor="in-person">In-Person</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <RadioGroupItem value="virtual" id="virtual" />
+                  <Label htmlFor="virtual">Virtual</Label>
+                </div>
               </RadioGroup>
             </div>
 
             {/* Event Description */}
             <div>
-              <Label htmlFor="event">Event (Optional)</Label>
+              <Label htmlFor="event" className="block text-sm font-medium leading-6">
+                Event (Optional)
+              </Label>
               <Textarea
                 id="event"
                 value={event}
                 onChange={(e) => setEvent(e.target.value)}
+                className="mt-2"
               />
             </div>
 
             {/* Message */}
             <div>
-              <Label htmlFor="message">Message</Label>
+              <Label htmlFor="message" className="block text-sm font-medium leading-6">
+                Message
+              </Label>
               <Textarea
                 id="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 required
+                className="mt-2"
               />
             </div>
 
             {/* Calendar */}
             <div>
-              <Label htmlFor="date">Preferred Date</Label>
+              <Label htmlFor="date" className="block text-sm font-medium leading-6">
+                Preferred Date
+              </Label>
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full mt-2">
                     <CalendarIcon className="mr-2 h-4 w-4" />
                     {formattedDate || "Pick a Date"}
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent>
-                  {/* Updated to onDayClick instead of onDateChange */}
+                <PopoverContent className="p-2">
                   <DayPicker selected={date} onDayClick={setDate} />
                 </PopoverContent>
               </Popover>
             </div>
 
-            <Button type="submit">Book Consultation</Button>
+            {/* Submit Button */}
+            <Button type="submit" className="w-full sm:w-auto">
+              Book Consultation
+            </Button>
           </form>
         </div>
       </section>
