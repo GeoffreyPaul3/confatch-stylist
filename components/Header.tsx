@@ -11,7 +11,7 @@ const Header = () => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleLinkClick = () => {
-    setIsSheetOpen(false); // Close the sheet when a link is clicked
+    setIsSheetOpen(false); 
   };
 
   return (
@@ -24,7 +24,7 @@ const Header = () => {
             </Link>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-8 mb-4">
               <Link href="/women" className="hover:text-primary transition">Women</Link>
               <Link href="/men" className="hover:text-primary transition">Men</Link>
               <Link href="/gallery" className="hover:text-primary transition">Gallery</Link>
