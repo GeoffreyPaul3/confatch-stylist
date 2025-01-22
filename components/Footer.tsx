@@ -1,6 +1,7 @@
-import { Facebook, Instagram, Twitter } from 'lucide-react'
+import { Facebook, Instagram} from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -9,7 +10,7 @@ export default function Footer() {
      <div className="max-w-6xl mx-auto px-4">
      <div className="grid md:grid-cols-4 gap-8">
     <div>
-      <h3 className="text-xl font-bold mb-4">CONFATCH Stylist</h3>
+      <Image src="/confatch/confatch.png" alt="logo" width={70} height={70} className="mb-4 filter invert"/>
       <p className="text-gray-400">
         Harmonizing African and Western culture through exquisite fashion.
       </p>
@@ -26,30 +27,24 @@ export default function Footer() {
         <Link href="/gallery" className="text-gray-400 hover:text-white transition">
           Gallery
         </Link>
-        <Link href="/blog" className="text-gray-400 hover:text-white transition">
-          Blog
-        </Link>
       </div>
     </div>
     <div>
       <h4 className="font-bold mb-4">Contact</h4>
       <div className="flex flex-col gap-2 text-gray-400">
-        <p>Email: contact@confatch.com</p>
-        <p>Phone: +265 999 999 999</p>
-        <p>Location: Lilongwe, Malawi</p>
+        <p>Email: constancemnelemba@yahoo.com</p>
+        <p>Phone: +49 176 22034365</p>
+        <p>Location: Germany</p>
       </div>
     </div>
     <div>
       <h4 className="font-bold mb-4">Follow Us</h4>
       <div className="flex gap-4">
-        <a href="#" className="text-gray-400 hover:text-white transition">
+        <a href="https://www.facebook.com/shanty.tee.587" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
           <Facebook className="w-6 h-6" />
         </a>
-        <a href="#" className="text-gray-400 hover:text-white transition">
+        <a href="https://www.instagram.com/confatch" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition">
           <Instagram className="w-6 h-6" />
-        </a>
-        <a href="#" className="text-gray-400 hover:text-white transition">
-          <Twitter className="w-6 h-6" />
         </a>
       </div>
     </div>

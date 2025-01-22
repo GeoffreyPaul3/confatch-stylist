@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import { ArrowRight, Heart } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,31 +8,27 @@ import Link from 'next/link';
 const collections = [
   {
     id: 1,
-    name: 'Heritage Suit',
-    price: '$899',
-    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80',
-    category: 'Suits'
+    image: '/confatch/img-34.jpg',
   },
   {
     id: 2,
-    name: 'Cultural Fusion Blazer',
-    price: '$559',
-    image: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&q=80',
-    category: 'Blazers'
+    image: '/confatch/img-27.jpg',
   },
   {
     id: 3,
-    name: 'Modern Print Shirt',
-    price: '$299',
-    image: 'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?auto=format&fit=crop&q=80',
-    category: 'Shirts'
+    image: '/confatch/img-32.jpg',
   },
   {
-    id: 4,
-    name: 'Tailored Trousers',
-    price: '$389',
-    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&q=80',
-    category: 'Trousers'
+    id: 4, 
+    image: '/confatch/img-33.jpg',
+  },
+  {
+    id: 5, 
+    image: '/confatch/img-30.jpg',
+  },
+  {
+    id: 6, 
+    image: '/confatch/img-34.jpg',
   }
 ];
 
@@ -40,7 +37,7 @@ export default function MenCollection() {
     <main>
       <section className="relative h-[70vh]">
         <Image
-          src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&q=80"
+          src="/confatch/img-30.jpg"
           alt="Men's Collection"
           fill
           className="object-cover"
@@ -60,24 +57,13 @@ export default function MenCollection() {
       {/* Categories */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="flex overflow-x-auto gap-4 pb-4 mb-8">
-            {['All', 'Suits', 'Blazers', 'Shirts', 'Trousers'].map((category) => (
-              <button
-                key={category}
-                className="px-6 py-2 rounded-full border border-gray-200 hover:border-primary hover:text-primary transition whitespace-nowrap"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {collections.map((item) => (
               <div key={item.id} className="group">
                 <div className="relative h-[500px] overflow-hidden rounded-lg mb-4">
                   <Image
                     src={item.image}
-                    alt={item.name}
+                    alt="men photo"
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
                   />
@@ -85,25 +71,19 @@ export default function MenCollection() {
                     <Heart className="w-5 h-5" />
                   </button>
                 </div>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="text-lg font-semibold">{item.name}</h3>
-                    <p className="text-sm text-gray-600">{item.category}</p>
-                  </div>
-                  <p className="text-lg font-bold">{item.price}</p>
-                </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-16">
+            <Button asChild className="bg-brown-600 hover:bg-brown-300 text-white">
             <Link
               href="/consultation"
-              className="inline-flex items-center gap-2 bg-primary text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition"
             >
               Book Personal Styling Session
               <ArrowRight className="w-4 h-4" />
             </Link>
+            </Button>
           </div>
         </div>
       </section>

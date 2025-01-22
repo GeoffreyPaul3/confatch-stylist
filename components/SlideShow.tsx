@@ -21,7 +21,7 @@ export default function Slideshow({ images, interval = 4000 }: SlideshowProps) {
   }, [images.length, interval]);
 
   return (
-    <div className="relative w-full h-[400px] overflow-hidden rounded-lg shadow-lg">
+    <div className="relative w-full h-[600px] overflow-hidden rounded-lg shadow-lg">
       <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}

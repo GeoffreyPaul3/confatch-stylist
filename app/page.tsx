@@ -8,9 +8,12 @@ import { Button } from "@/components/ui/button"
 
 
 const slideshowImages = [
-  "/confatch/img-1.jpg",
-  "/confatch/img-2.jpg", 
-  "/confatch/img-3.jpg",
+  "/confatch/img-4.jpg",
+  "/confatch/img-20.jpg", 
+  "/confatch/img-7.jpg",
+  "/confatch/img-27.jpg",
+  "/confatch/img-11.jpg", 
+  "/confatch/img-19.jpg",
 ]
 
 
@@ -21,7 +24,7 @@ export default function Home() {
       <Hero />
       <Category />
       <AboutUs />
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-brown-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="font-playfair text-4xl font-bold mb-8 text-center">Featured Collection</h2>
           <Slideshow images={ slideshowImages} />
@@ -30,7 +33,20 @@ export default function Home() {
               <Link href="/collections">View All Collections</Link>
 
             </Button>
-          </div>
+          </div>        
+        </div>
+      </section>
+
+      
+      <section className="py-16 px-4 sm:px-6 lg:px-8  rounded-3xl shadow-xl">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="font-playfair text-3xl font-bold mb-4">Join the Confatch Family</h2>
+          <p className="text-gray-600 mb-8">
+            Experience the fusion of African heritage and Western luxury. Let&apos;s create something beautiful together.
+          </p>
+          <Button asChild size="lg"  className="bg-brown-600 hover:bg-brown-300 text-white">
+            <Link href="/consultation">Book Your Personalized Consultation</Link>
+          </Button>
         </div>
       </section>
     </div>
