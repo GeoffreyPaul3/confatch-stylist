@@ -197,15 +197,15 @@ export default function Consultation() {
           </form>
 
           <div className="mt-16 grid md:grid-cols-3 gap-8 text-center">
-            <div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="font-semibold mb-2">Personal Attention</h3>
               <p className="text-gray-600">One-on-one sessions with our expert stylists.</p>
             </div>
-            <div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="font-semibold mb-2">Style Analysis</h3>
               <p className="text-gray-600">Comprehensive assessment of your style preferences.</p>
             </div>
-            <div>
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="font-semibold mb-2">Custom Solutions</h3>
               <p className="text-gray-600">Tailored recommendations for your lifestyle.</p>
             </div>
