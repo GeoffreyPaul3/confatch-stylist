@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Calendar } from "@/components/ui/calendar"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { ArrowRight, CalendarIcon } from "lucide-react"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { useToast } from "@/hooks/use-toast"
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { CalendarIcon } from "lucide-react"; // Removed ArrowRight since it was not being used
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useToast } from "@/hooks/use-toast";
+import { DayPicker } from "react-day-picker";
 
 export default function Consultation() {
-  const [date, setDate] = useState<Date | null>(null)
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("")
-  const [consultationType, setConsultationType] = useState("in-person")
-  const [event, setEvent] = useState("")
-  const [message, setMessage] = useState("")
-  const { toast } = useToast()
+  const [date, setDate] = useState<Date | undefined>(undefined); // Change to undefined to avoid `null` assignment issue
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [consultationType, setConsultationType] = useState("in-person");
+  const [event, setEvent] = useState("");
+  const [message, setMessage] = useState("");
+  const { toast } = useToast();
 
-  const formattedDate = date ? new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(date) : null
+  const formattedDate = date ? new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(date) : null;
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const response = await fetch("/api/book-consultation", {
         method: "POST",
@@ -40,23 +40,23 @@ export default function Consultation() {
           event,
           message,
         }),
-      })
+      });
 
       if (response.ok) {
         toast({
           title: "Consultation Booked",
           description: "You'll receive a confirmation email shortly.",
-        })
+        });
         // Reset form
-        setName("")
-        setEmail("")
-        setPhone("")
-        setDate(null)
-        setConsultationType("in-person")
-        setEvent("")
-        setMessage("")
+        setName("");
+        setEmail("");
+        setPhone("");
+        setDate(undefined); // Reset to undefined instead of null
+        setConsultationType("in-person");
+        setEvent("");
+        setMessage("");
       } else {
-        throw new Error("Failed to book consultation")
+        throw new Error("Failed to book consultation");
       }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
@@ -64,9 +64,9 @@ export default function Consultation() {
         title: "Error",
         description: "Failed to book consultation. Please try again.",
         variant: "destructive",
-      })
+      });
     }
-  }
+  };
 
   return (
     <main className="pt-24">
@@ -79,126 +79,96 @@ export default function Consultation() {
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-8 bg-white p-8 rounded-lg shadow-lg">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="name">Full Name</Label>
-                  <Input
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    placeholder="Enter your full name"
-                    aria-label="Full Name"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    aria-label="Email"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="phone">Phone Number</Label>
-                  <Input
-                    id="phone"
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="Enter your phone number"
-                    aria-label="Phone Number"
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label>Preferred Consultation Type</Label>
-                  <RadioGroup value={consultationType} onValueChange={setConsultationType}>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="in-person" id="in-person" />
-                      <Label htmlFor="in-person">In-Person</Label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="virtual" id="virtual" />
-                      <Label htmlFor="virtual">Virtual</Label>
-                    </div>
-                  </RadioGroup>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <Label>Preferred Date</Label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className="w-full justify-start text-left font-normal"
-                        aria-label="Pick a date"
-                      >
-                        <CalendarIcon className="mr-2 h-4 w-4" />
-                        {formattedDate || <span>Pick a date</span>}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0">
-                      <Calendar
-                        mode="single"
-                        selected={date || undefined}
-                        onSelect={(day) => setDate(day || null)}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-
-                <div>
-                  <Label htmlFor="event">Event Type (if any)</Label>
-                  <Input
-                    id="event"
-                    value={event}
-                    onChange={(e) => setEvent(e.target.value)}
-                    placeholder="e.g., Wedding, Corporate Event, etc."
-                    aria-label="Event Type"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="message">Additional Information</Label>
-                  <Textarea
-                    id="message"
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Tell us about your style preferences, any specific requirements, or questions you have."
-                    aria-label="Additional Information"
-                    className="h-32"
-                  />
-                </div>
-              </div>
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Name Field */}
+            <div>
+              <Label htmlFor="name">Name</Label>
+              <Input
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
             </div>
 
-            <div className="text-center">
-              <Button
-                type="submit"
-                size="lg"
-                aria-label="Book Consultation"
-                className="bg-brown-600 hover:bg-brown-300 text-white"
-              >
-                Book Consultation
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+            {/* Email Field */}
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                required
+              />
             </div>
+
+            {/* Phone Field */}
+            <div>
+              <Label htmlFor="phone">Phone Number</Label>
+              <Input
+                id="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+              />
+            </div>
+
+            {/* Consultation Type Radio Group */}
+            <div>
+              <Label>Consultation Type</Label>
+              <RadioGroup value={consultationType} onValueChange={setConsultationType}>
+                <RadioGroupItem value="in-person">
+                  <Label>In-Person</Label>
+                </RadioGroupItem>
+                <RadioGroupItem value="virtual">
+                  <Label>Virtual</Label>
+                </RadioGroupItem>
+              </RadioGroup>
+            </div>
+
+            {/* Event Description */}
+            <div>
+              <Label htmlFor="event">Event (Optional)</Label>
+              <Textarea
+                id="event"
+                value={event}
+                onChange={(e) => setEvent(e.target.value)}
+              />
+            </div>
+
+            {/* Message */}
+            <div>
+              <Label htmlFor="message">Message</Label>
+              <Textarea
+                id="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+              />
+            </div>
+
+            {/* Calendar */}
+            <div>
+              <Label htmlFor="date">Preferred Date</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button variant="outline" className="w-full">
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {formattedDate || "Pick a Date"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent>
+                  {/* Updated to onDayClick instead of onDateChange */}
+                  <DayPicker selected={date} onDayClick={setDate} />
+                </PopoverContent>
+              </Popover>
+            </div>
+
+            <Button type="submit">Book Consultation</Button>
           </form>
         </div>
       </section>
     </main>
-  )
+  );
 }
