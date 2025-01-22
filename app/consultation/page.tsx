@@ -70,7 +70,7 @@ export default function Consultation() {
 
   return (
     <main className="pt-24">
-      <section className="py-16 px-4 bg-brown-50">
+      <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-4">Personal Styling Consultation</h1>
