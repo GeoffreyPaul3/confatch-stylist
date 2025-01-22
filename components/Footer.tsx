@@ -10,7 +10,9 @@ export default function Footer() {
      <div className="max-w-6xl mx-auto px-4">
      <div className="grid md:grid-cols-4 gap-8">
     <div>
+      <Link href="/">
       <Image src="/confatch/confatch.png" alt="logo" width={70} height={70} className="mb-4 filter invert"/>
+      </Link>
       <p className="text-gray-400">
         Harmonizing African and Western culture through exquisite fashion.
       </p>

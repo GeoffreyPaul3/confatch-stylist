@@ -30,8 +30,7 @@ export default function Home() {
           <Slideshow images={ slideshowImages} />
           <div className="mt-8 text-center">
             <Button asChild className='bg-brown-600 hover:bg-brown-400'>
-              <Link href="/collections">View All Collections</Link>
-
+              <Link href="/gallery">View All Collections</Link>
             </Button>
           </div>        
         </div>
