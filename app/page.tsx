@@ -4,6 +4,7 @@ import AboutUs from '@/components/AboutUs'
 import Hero from '../components/Hero'
 import Slideshow from '../components/SlideShow'
 import { Button } from "@/components/ui/button"
+import OurValues from '@/components/OurValues'
 
 
 
@@ -36,6 +37,7 @@ export default function Home() {
         </div>
       </section>
 
+        <OurValues />
       
       <section className="py-16 px-4 sm:px-6 lg:px-8  rounded-3xl shadow-xl">
         <div className="max-w-6xl mx-auto text-center">

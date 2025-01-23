@@ -36,7 +36,7 @@ export async function POST(req: Request) {
 
     // Send email to customer
     await resend.emails.send({
-      from: "Confatch Styling <constancemnelemba@yahoo.com>",
+      from: "Confatch Styling <confatch.stylist@gmail.com>",
       to: email,
       subject: "Your Confatch Styling Consultation is Confirmed",
       html: customerEmailHtml,
@@ -44,8 +44,8 @@ export async function POST(req: Request) {
 
     // Send email to admin
     await resend.emails.send({
-      from: "Confatch Styling <constancemnelemba@yahoo.com>",
-      to: "constancemnelemba@yahoo.com",
+      from: "Confatch Styling <confatch.stylist@gmail.com>",
+      to: "confatch.stylist@gmail.com",
       subject: "New Consultation Booking",
       html: adminEmailHtml,
     });
