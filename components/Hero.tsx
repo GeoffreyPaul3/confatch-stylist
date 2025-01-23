@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'
 
 export default function Hero() {
   return (
-    <section className="relative h-screen bg-[url('/confatch/img-12.jpg')] bg-cover bg-center">
+    <section className="relative h-[1000px] bg-[url('/confatch/img-12.jpg')] bg-cover bg-center bg-no-repeat">
       <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white text-center px-4">
         <motion.h1 
           className="font-playfair text-4xl sm:text-5xl md:text-6xl font-bold mb-4"

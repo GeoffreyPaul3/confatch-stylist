@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 interface SlideshowProps {
   images: string[];
-  interval?: number; // Time between slides in milliseconds (default: 5000)
+  interval?: number;
 }
 
 export default function Slideshow({ images, interval = 4000 }: SlideshowProps) {
@@ -21,7 +21,7 @@ export default function Slideshow({ images, interval = 4000 }: SlideshowProps) {
   }, [images.length, interval]);
 
   return (
-    <div className="relative w-full h-[600px] overflow-hidden rounded-lg shadow-lg">
+    <div className="relative w-full h-[600px] xl:h-[1200px] overflow-hidden rounded-lg shadow-lg">
       <AnimatePresence initial={false}>
         <motion.div
           key={currentIndex}
@@ -37,6 +37,7 @@ export default function Slideshow({ images, interval = 4000 }: SlideshowProps) {
             layout="fill"
             objectFit="cover"
             quality={100}
+            priority
           />
         </motion.div>
       </AnimatePresence>
@@ -44,8 +45,8 @@ export default function Slideshow({ images, interval = 4000 }: SlideshowProps) {
         {images.map((_, index) => (
           <button
             key={index}
-            className={`w-3 h-3 rounded-full ${
-              index === currentIndex ? 'bg-white' : 'bg-gray-400'
+            className={`w-2 h-2 rounded-full transition-all duration-400 ${
+              index === currentIndex ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/75'
             }`}
             onClick={() => setCurrentIndex(index)}
           />
