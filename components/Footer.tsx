@@ -34,7 +34,7 @@ export default function Footer() {
     <div>
       <h4 className="font-bold mb-4">Contact</h4>
       <div className="flex flex-col gap-2 text-gray-400">
-        <p>Email: constancemnelemba@yahoo.com</p>
+        <p>Email: confatch.stylist@gmail.com</p>
         <p>Phone: +49 176 22034365</p>
         <p>Location: Germany</p>
       </div>

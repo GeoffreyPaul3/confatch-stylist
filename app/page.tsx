@@ -11,6 +11,10 @@ import OurValues from '@/components/OurValues'
 const slideshowImages = [
   "/confatch/img-4.jpg",
   "/confatch/img-20.jpg", 
+  "/confatch/img-10.jpg",
+  "/confatch/img-13.jpg", 
+  "/confatch/img-12.jpg",
+  "/confatch/img-32.jpg", 
   "/confatch/img-7.jpg",
   "/confatch/img-27.jpg",
   "/confatch/img-11.jpg", 
@@ -36,10 +40,10 @@ export default function Home() {
           </div>        
         </div>
       </section>
-
-        <OurValues />
       
-      <section className="py-16 px-4 sm:px-6 lg:px-8  rounded-3xl shadow-xl">
+        <OurValues />
+
+      <section className="py-16 px-4 sm:px-6 lg:px-8 shadow-xl">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="font-playfair text-3xl font-bold mb-4">Join the Confatch Family</h2>
           <p className="text-gray-600 mb-8">
@@ -54,4 +58,5 @@ export default function Home() {
   </>
   )
 }
+
 

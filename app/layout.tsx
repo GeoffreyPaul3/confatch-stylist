@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { Toaster } from "@/components/ui/toaster";
+import "yet-another-react-lightbox/styles.css"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
