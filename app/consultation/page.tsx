@@ -8,9 +8,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { ArrowRight, CalendarIcon } from "lucide-react"
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-import { useToast } from "@/hooks/use-toast";
-import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import { useToast } from "@/hooks/use-toast"
+import Calendar from "react-calendar"
+import "react-calendar/dist/Calendar.css"
 
 export default function Consultation() {
   const [date, setDate] = useState<Date | null>(new Date())
@@ -37,6 +37,9 @@ export default function Consultation() {
           email,
           date: formattedDate,
           consultationType,
+          phone,
+          event,
+          message,
         }),
       })
 
@@ -197,15 +200,15 @@ export default function Consultation() {
           </form>
 
           <div className="mt-16 grid md:grid-cols-3 gap-8 text-center">
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div>
               <h3 className="font-semibold mb-2">Personal Attention</h3>
               <p className="text-gray-600">One-on-one sessions with our expert stylists.</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div>
               <h3 className="font-semibold mb-2">Style Analysis</h3>
               <p className="text-gray-600">Comprehensive assessment of your style preferences.</p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div>
               <h3 className="font-semibold mb-2">Custom Solutions</h3>
               <p className="text-gray-600">Tailored recommendations for your lifestyle.</p>
             </div>

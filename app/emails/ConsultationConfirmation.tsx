@@ -32,16 +32,13 @@ const ConsultationConfirmationEmail: React.FC<ConsultationConfirmationEmailProps
           <strong>{consultationType}</strong> session.
         </Text>
 
-        {/* Event Details */}
         <Text style={text}>
-          <strong>Event Details:</strong>
+          <strong>Event Details:</strong> {event || "No specific event details provided."}
         </Text>
-        <Text style={text}>{event || "No specific event details provided."}</Text>
 
-        {/* Optional message from customer */}
         {message && (
           <Text style={text}>
-            <strong>Your Message:</strong> {message}
+            <strong>Additional Information:</strong> {message}
           </Text>
         )}
 
