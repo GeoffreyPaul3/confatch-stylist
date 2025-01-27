@@ -1,13 +1,13 @@
-import { Body, Container, Head, Heading, Html, Preview, Text } from "@react-email/components";
-import type * as React from "react";
+import { Body, Container, Head, Heading, Html, Preview, Text } from "@react-email/components"
+import type * as React from "react"
 
 interface ConsultationConfirmationEmailProps {
-  name: string;
-  date: string;
-  consultationType: string;
-  phone: string;
-  event: string;
-  message: string;
+  name: string
+  date: string
+  consultationType: string
+  phone: string
+  event: string
+  message: string
 }
 
 const ConsultationConfirmationEmail: React.FC<ConsultationConfirmationEmailProps> = ({
@@ -21,40 +21,74 @@ const ConsultationConfirmationEmail: React.FC<ConsultationConfirmationEmailProps
   <Html>
     <Head />
     <Preview>Your Confatch Styling Consultation is Confirmed</Preview>
-    <Body className="bg-white font-sans">
-      <Container className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-        <Heading className="text-3xl font-bold text-gray-800 mb-4">Consultation Confirmation</Heading>
-        
-        <Text className="text-lg text-gray-700 mb-2">Dear {name},</Text>
-        
-        <Text className="text-lg text-gray-700 mb-4">
+    <Body style={main}>
+      <Container style={container}>
+        <Heading style={h1}>Consultation Confirmation</Heading>
+
+        <Text style={text}>Dear {name},</Text>
+
+        <Text style={text}>
           Your consultation is confirmed for <strong>{date}</strong>. We look forward to meeting you for a{" "}
           <strong>{consultationType}</strong> session.
         </Text>
-        
+
         {/* Event Details */}
-        <Text className="text-lg text-gray-700 mb-2">
+        <Text style={text}>
           <strong>Event Details:</strong>
         </Text>
-        <Text className="text-lg text-gray-700 mb-4">{event}</Text>
-        
+        <Text style={text}>{event || "No specific event details provided."}</Text>
+
         {/* Optional message from customer */}
         {message && (
-          <Text className="text-lg text-gray-700 mb-4">
-            <strong>Message from you:</strong> {message}
+          <Text style={text}>
+            <strong>Your Message:</strong> {message}
           </Text>
         )}
-        
-        <Text className="text-lg text-gray-700 mb-4">
-          If you have any questions, please feel free to reach out at <strong>{phone}</strong>.
+
+        <Text style={text}>
+          If you have any questions, please feel free to reach out at <strong>{phone || "our contact number"}</strong>.
         </Text>
-        
-        <Text className="text-sm text-gray-500 mt-6">
-          Thank you for choosing Confatch Styling! We look forward to your session.
-        </Text>
+
+        <Text style={footer}>Thank you for choosing Confatch Styling! We look forward to your session.</Text>
       </Container>
     </Body>
   </Html>
-);
+)
 
-export default ConsultationConfirmationEmail;
+export default ConsultationConfirmationEmail
+
+// Styles
+const main = {
+  backgroundColor: "#ffffff",
+  fontFamily:
+    '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
+}
+
+const container = {
+  margin: "0 auto",
+  padding: "20px 0 48px",
+  width: "580px",
+}
+
+const h1 = {
+  color: "#333",
+  fontSize: "24px",
+  fontWeight: "bold",
+  padding: "17px 0 0",
+  margin: "0",
+}
+
+const text = {
+  color: "#333",
+  fontSize: "16px",
+  lineHeight: "26px",
+  margin: "16px 0",
+}
+
+const footer = {
+  color: "#666",
+  fontSize: "14px",
+  fontStyle: "italic",
+  marginTop: "24px",
+}
+
