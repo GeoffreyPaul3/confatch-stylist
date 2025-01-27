@@ -14,7 +14,6 @@ const ConsultationConfirmationEmail: React.FC<ConsultationConfirmationEmailProps
   name,
   date,
   consultationType,
-  phone,
   event,
   message,
 }) => (
@@ -43,7 +42,7 @@ const ConsultationConfirmationEmail: React.FC<ConsultationConfirmationEmailProps
         )}
 
         <Text style={text}>
-          If you have any questions, please feel free to reach out at <strong>{phone || "our contact number"}</strong>.
+          If you have any questions, please feel free to contact us using our phone number or email.
         </Text>
 
         <Text style={footer}>Thank you for choosing Confatch Styling! We look forward to your session.</Text>
