@@ -29,7 +29,12 @@ const collections = [
   {
     id: 6, 
     image: '/confatch/img-34.jpg',
-  }
+  },
+  {
+    id: 7, 
+    image: '/confatch/img-45.jpg',
+  },
+  
 ];
 
 export default function MenCollection() {
