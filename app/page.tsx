@@ -11,6 +11,9 @@ import OurValues from '@/components/OurValues'
 const slideshowImages = [
   "/confatch/img-4.jpg",
   "/confatch/img-20.jpg", 
+  "/confatch/img-36.jpg",
+  "/confatch/img-42.jpg",
+  "/confatch/img-46.jpg",
   "/confatch/img-10.jpg",
   "/confatch/img-13.jpg", 
   "/confatch/img-12.jpg",
