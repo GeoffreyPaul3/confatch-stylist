@@ -16,12 +16,18 @@ const slideshowImages = [
   "/confatch/img-12.jpg",
   "/confatch/img-32.jpg", 
   "/confatch/img-7.jpg",
+  "/confatch/img-43.jpg",
+  "/confatch/img-41.jpg",
+  "/confatch/img-45.jpg",
   "/confatch/img-27.jpg",
   "/confatch/img-11.jpg", 
   "/confatch/img-19.jpg",
   "/confatch/img-37.jpg",
   "/confatch/img-47.jpg",
   "/confatch/img-38.jpg",
+  "/confatch/img-49.jpg",
+
+  
 ]
 
 
