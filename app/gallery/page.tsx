@@ -47,6 +47,21 @@ const Gallery = () => {
     { src: "/confatch/img-29.jpg" },
     { src: "/confatch/img-28.jpg" },
     { src: "/confatch/img-34.jpg" },
+    { src: "/confatch/img-35.jpg" },
+    { src: "/confatch/img-36.jpg" },
+    { src: "/confatch/img-37.jpg" },
+    { src: "/confatch/img-38.jpg" },
+    { src: "/confatch/img-39.jpg" },
+    { src: "/confatch/img-40.jpg" },
+    { src: "/confatch/img-41.jpg" },
+    { src: "/confatch/img-42.jpg" },
+    { src: "/confatch/img-43.jpg" },
+    { src: "/confatch/img-44.jpg" },
+    { src: "/confatch/img-45.jpg" },
+    { src: "/confatch/img-46.jpg" },
+    { src: "/confatch/img-47.jpg" },
+    { src: "/confatch/img-48.jpg" },
+    { src: "/confatch/img-49.jpg" },
   ]
 
   const breakpointColumnsObj = {
